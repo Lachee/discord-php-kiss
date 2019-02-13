@@ -8,7 +8,7 @@
 
     require "discord_curl.php";
 
-    $guildID = "364296743770259457";       //ID of the guild the role is in
+    $guildID = "81384788765712384";       //ID of the guild the role is in
     $roleID = "454876643257876480";        //ID of the role to award
     $userID = "130973321683533824";        //ID of the user we are going to award the role too
     $botToken = file_get_contents("bot.key");   //The secret and SENSITIVE bot token.
