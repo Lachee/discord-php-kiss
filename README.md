@@ -3,6 +3,7 @@ A Keep It Simple Stupid approach of Discord and PHP.
 This library is minimal and only has 2 files, one for requests with a bot token and the other for oauth2.
 
 **This is not best practice!**
+
 This is just a quick dirty example to get you started with implementing your own oAuth2 flow with Discord. It does work and meet all the API requirements, but it doesnt support ratelimits and is a pure functional style of PHP. 
 
 ## discord_curl.php
