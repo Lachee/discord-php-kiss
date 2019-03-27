@@ -38,7 +38,7 @@ function discord_oauth_exchange($clientID, $clientSecret, $scope, $redirect,  $c
  * Sets the location header to the discord authorization screen and exits. 
  * This will cause the user to be redirected to discord to accept the oauth.
  */
-function discord_oauth_redirect($clientID, $scope, $redirect)
+function discord_oauth_redirect($clientID, $scope, $redirect, $no_prompt = true)
 { 
     $authurl = DISCORD_API . "/oauth2/authorize";
     $query = http_build_query(array(
@@ -47,6 +47,6 @@ function discord_oauth_redirect($clientID, $scope, $redirect)
         "scope" => $scope,
         "redirect_uri" => $redirect
     ));
-    header("location: {$authurl}?{$query}");
+    header("location: {$authurl}?{$query}" . ($no_prompt ? "&prompt=none" : ""));
     exit;
 }

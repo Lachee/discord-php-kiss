@@ -9,15 +9,15 @@
 
     require "discord_oauth.php";
 
-    $redirectURL = "http://127.0.0.1:81/discord/kiss/example_oauth.php";    //The URL that the user will be redirect back too
+    $redirectURL = "http://127.0.0.1:81/discord/discord-php-kiss/example_oauth.php";    //The URL that the user will be redirect back too
     $clientID = "439410995987742720";                                       //The ID of the client
     $clientSecret = file_get_contents("client.key");                        //The sensitive and secret key of the client
-    $scope = "identify email";                                              //Space delimered scope
+    $scope = "identify email guilds";                                              //Space delimered scope
 
     //If we do not have a code, then we will redirect them
     // The exit; is not required, but its a good explicit practice.
     if (!isset($_GET['code'])) {
-        discord_oauth_redirect($clientID, $scope, $redirectURL);
+        discord_oauth_redirect($clientID, $scope, $redirectURL, true);
         exit;
     }
 
@@ -34,6 +34,13 @@
 
     if ($user == null || !empty($user['message']))
         die("Failed: /users/@me threw a error: " . $user['message']);
+	
+	//Get the guilds
+    $guilds = discord_oauth_get("/users/@me/guilds", $auth['access_token']);
+    echo "<h3>Guilds Response:</h3>"; var_dump($guilds);  echo "<hr>";
+
+    if ($guilds == null || !empty($guilds['message']))
+        die("Failed: /users/@me/guilds threw a error: " . $guilds['message']);
 
     //Display the username
     echo "Welcome " . $user['username'];
