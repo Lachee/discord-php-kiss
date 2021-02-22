@@ -1,6 +1,18 @@
 <?php
+
+/**
+ * This file provides functions to use Discord Bots.
+ * Its main purpose is to just wrap teh CURL requests, showing how the Authorization header needs to be used.
+ * 
+ * Use this as a guide only. It duplicates code for ease of assessibility.
+ * 
+ * Author:          Lachee
+ * Last Updated:    Feb 2021
+ * License:         MIT
+*/
+
 if (!defined("DISCORD_API"))
-    define("DISCORD_API", "https://discordapp.com/api/v6");
+    define("DISCORD_API", "https://discordapp.com/api/v8");
 
 
 /**
